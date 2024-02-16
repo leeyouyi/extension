@@ -1,3 +1,4 @@
+/** 預設規則 */
 const ruleSet = {
   id: 1,
   priority: 1,
@@ -45,7 +46,7 @@ chrome.webNavigation.onBeforeNavigate.addListener((details) => {
   checkUrl(details.url);
 });
 
-/** 改變符合api檢查格式 */
+/** 改變符合api檢查的url格式 */
 const urlFromat = (url) => {
   if (url.includes("about:blank")) {
     return false;
@@ -232,16 +233,7 @@ async function sendMsgToContentScript() {
     });
   });
 }
-const reddenPage = () => {
-  document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(
-      () => () => {
-        location.href = location.href;
-      },
-      [1000]
-    );
-  });
-};
+
 /** 取得目前分頁 */
 async function getCurrentTab() {
   const queryOptions = { active: true, lastFocusedWindow: true };
