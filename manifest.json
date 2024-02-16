@@ -1,0 +1,40 @@
+{
+  "manifest_version": 3,
+  "name": "validate url",
+  "version": "1.0",
+  "description": "check url safe",
+  "background": {
+    "service_worker": "background.js"
+  },
+  "icons": {
+    "16": "images/icon-16.png",
+    "32": "images/icon-32.png",
+    "48": "images/icon-48.png",
+    "128": "images/icon-128.png"
+  },
+  "permissions": [
+    "activeTab",
+    "tabs",
+    "scripting",
+    "webNavigation",
+    "declarativeNetRequest",
+    "declarativeNetRequestFeedback"
+  ],
+  "host_permissions": ["https://*/*", "http://*/*"],
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "ruleset_1",
+        "enabled": true,
+        "path": "rules_1.json"
+      }
+    ]
+  },
+  "content_scripts": [
+    {
+      "js": ["scripts/content.js"],
+      "matches": ["<all_urls>"]
+    }
+  ],
+  "action": {}
+}
